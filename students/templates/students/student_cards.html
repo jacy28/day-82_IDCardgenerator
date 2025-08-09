@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+</head>
+
+<style>
+    .card{
+        border: 2px solid black;
+    }
+</style>
+
+<body>
+
+    <div class="container my-4">
+    <h2 class="text-center">Student ID Cards</h2>
+    {% if students %}
+        <div class="d-flex gap-4">
+            {% for student in students %}
+                <div class="card d-flex flex-column align-items-center justify-content-center">
+                    <div class="card-img text-center">
+                        <img src="{{ student.photo.url }}" alt="{{ student.name }}'s photo" class="img-fluid" width="150">
+                    </div>
+                    <div class="card-content mt-4 px-3">
+                        <pre><strong>Name    :</strong> {{ student.name }}</pre>
+                        <pre><strong>Class   :</strong> {{ student.student_class }}</pre>
+                        <pre><strong>Section :</strong> {{ student.section }}</pre> 
+                        <pre><strong>ID      :</strong> {{ student.student_id }}</pre>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No students found.</p>
+    {% endif %}
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
